@@ -1,0 +1,233 @@
+Excel VBA常用代码100句
+2021-03-06 分类：Excel图文教程 / 图文教程 阅读(2997)
+(1) Option Explicit ‘强制对模块内所有变量进行声明
+
+(2) Option Base 1 ‘指定数组的第一个下标为1
+
+(3) On Error Resume Next ‘忽略错误继续执行VBA代码,避免出现错误消息
+
+(4) On Error GoTo 100 ‘当错误发生时跳转到过程中的某个位置
+
+(5) On Error GoTo 0 ‘恢复正常的错误提示
+
+(6) Application.DisplayAlerts=False ‘在程序执行过程中使出现的警告框不显示
+
+(7) Application.DisplayAlerts=True ‘在程序执行过程中恢复显示警告框
+
+(8) Application.ScreenUpdating=False ‘关闭屏幕刷新
+
+(9) Application.ScreenUpdating = True ‘打开屏幕刷新
+
+(10)  Workbooks.Add() ‘创建一个新的工作簿
+
+(11)  Workbooks(“book1.xls”).Activate ‘激活名为book1的工作簿
+
+(12) ThisWorkbook.Save ‘保存工作簿
+
+(13) ThisWorkbook.close ‘关闭当前工作簿
+
+(14)  ActiveWorkbook.Sheets.Count ‘获取活动工作薄中工作表数
+
+(15)  ActiveWorkbook.name  ‘返回活动工作薄的名称
+
+(16) ThisWorkbook.Name ‘返回当前工作簿名称
+
+(17) ThisWorkbook.FullName ‘返回当前工作簿路径和名
+
+(18) ActiveSheet.UsedRange.Rows.Count ‘当前工作表中已使用的行数
+
+(19) Rows.Count ‘获取工作表的行数(注：考虑兼容性)
+
+(20)  Sheets(Sheet1).Name= “Sum” ‘将Sheet1命名为Sum
+
+(21)  ThisWorkbook.Sheets.Add Before:=Worksheets(1) ‘添加一个新工作表在第一工作表前
+
+(22)  ActiveSheet.Move After:=ActiveWorkbook.Sheets(ActiveWorkbook.Sheets.Count) ‘将当前工作表移至工作表的最后
+
+(23)  Worksheets(Array(“sheet1”,”sheet2”)).Select ‘同时选择工作表1和工作表2
+
+(24)  Sheets(“sheet1”).Delete或 Sheets(1).Delete ‘删除工作表1
+
+(25)  ActiveSheet.UsedRange.FormatConditions.Delete ‘删除当前工作表中所有的条件格式
+
+(26)  Cells.Hyperlinks.Delete ‘取消当前工作表所有超链接
+
+(27) ActiveCell.CurrentRegion.Select选择当前活动单元格所包含的范围，等同于快捷键Ctrl+A
+
+(28)  Cells.Select ‘选定当前工作表的所有单元格
+
+(29)  Range(“A1”).ClearContents ‘清除活动工作表上单元格A1中的内容。Selection.ClearContents ‘清除选定区域内容。Range(“A1:D4”).Clear ‘彻底清除A1至D4单元格区域的内容，包括格式。
+
+(30)  Cells.Clear ‘清除工作表中所有单元格的内容
+
+(31) ActiveCell.Offset(1,0).Select ‘活动单元格下移一行，同理，可下移一列
+
+(32)  Range(“A1”).Copy Range(“B1”) ‘复制单元格A1，粘贴到单元格B1中
+
+(33) Range(“A1:D8”).Copy Range(“F1”) ‘将单元格区域复制到单元格F1开始的区域中
+
+(34) Range(“A1:D8”).Cut Range(“F1”) ‘剪切单元格区域A1至D8，复制到单元格F1开始的区域中
+
+(35) Range(“A1”).CurrentRegion.Copy Sheets(“Sheet2”).Range(“A1”) ‘复制包含A1的单元格区域到工作表2中以A1起始的单元格区域中。
+
+(36) ActiveWindow.RangeSelection.Count ‘活动窗口中选择的单元格数
+
+(37)  Selection.Count ‘当前选中区域的单元格数
+
+(38) Range(“A1”).Interior.ColorIndex ‘获取单元格A1背景色
+
+(39)  cells.count ‘返回当前工作表的单元格数
+
+(40) Range(“B3”).Resize(11, 3)
+
+(41) Union(Range(“A1:A9”),Range(“D1:D9”)) 区域连接
+
+(42) Intersect(Range(“A1:B9”),Range(“A1:D9”))) ‘返回的交叉区域
+
+(43)  Selection.Columns.Count ‘当前选中的单元格区域中的列数
+
+(44) Selection.Rows.Count ‘当前选中的单元格区域中的行数
+
+(45) ActiveSheet.UsedRange.Row  ‘获取单元格区域中使用的第一行的行号
+
+(46)  Application.WorksheetFunction.IsNumber(“A1”) ‘使用工作表函数检查A1单元格中的数据是否为数字
+
+(47) Range(“A:A”).Find(Application.WorksheetFunction.Max(Range(“A:A”))).Activate’激活单元格区域A列中最大值的单元格
+
+(48) MsgBox “Hello!” ‘消息框中显示消息Hello
+
+(49) Ans=MsgBox(“Continue?”,vbYesNo) ‘在消息框中点击“是”按钮，则Ans值为vbYes；点击“否”按钮，则Ans值为vbNo。
+
+(50)  Userform1.Show ‘显示用户窗体
+
+(51) Load Userform1 ‘加载一个用户窗体,但该窗体处于隐藏状态
+
+(52)  Userform1.Hide ‘隐藏用户窗体
+
+(53) Unload Userform1 或 Unload Me ‘卸载用户窗体
+
+(54) UserForm1.Show 0‘将窗体设置为无模式状态
+
+(55)  Application.EnableEvents=False ‘禁用所有事件
+
+(56) Application.EnableEvents = True ‘启用所有事件
+
+(57) Set d = CreateObject(Scripting.Dictionary) ‘创建一个 Dictionary 对象变量
+
+(58)  d.Add “a”, “Athens” ‘为对象变量添加关键字和条
+
+(59)  Application.OnKey “^I”,”macro” ‘设置Ctrl+I键为macro过程的快捷键
+
+(60)  Application.CutCopyMode=False ‘退出剪切/复制模式
+
+(61)  Application.Volatile True ‘无论何时工作表中任意单元格重新计算，都会强制计算该函数
+
+(62) Application.Volatile False ‘只有在该函数的一个或多个参数发生改变时，才会重新计算该函数
+
+(63)  Err.Clear ‘清除程序运行过程中所有的错误
+
+(64) Workbooks.Close ‘关闭所有打开的工作簿
+
+(65) ActiveWorkbook.Path ‘返回当前工作簿的路径(注:若工作簿未保存,则为空)
+
+(66) ActiveWorkbook.Saved ‘返回工作簿的存储值(若已保存则为False)
+
+(67) Application.Visible = False ‘隐藏工作簿
+
+(68) Application.Visible = True ‘显示工作簿
+
+(69)  ActiveSheet.Columns(“B”).Insert ‘在A列右侧插入列，即插入B列
+
+(70) ActiveSheet.Columns(“E”).Cut
+
+(71) ActiveSheet.Columns(“B”).Insert  70,71两句将E列数据移至B列，原B列及以后的数据相应后移
+
+(72) ActiveSheet.Calculate ‘计算当前工作表
+
+(73) ThisWorkbook.Worksheets(“sheet1”).Visible=xlSheetHidden ‘正常隐藏工作表，同在Excel菜单中选择“格式——工作表——隐藏”操作一样
+
+(74) ThisWorkbook.Worksheets(“sheet1”).Visible=xlSheetVeryHidden ‘隐藏工作表，不能通过在Excel菜单中选择“格式——工作表——取消隐藏”来重新显示工作
+
+(75) ThisWorkbook.Worksheets(“sheet1”).Visible=xlSheetVisible ‘显示被隐藏的工作表
+
+(76)  ThisWorkbook.Sheets(1).ProtectContents ‘检查工作表是否受到保护
+
+(77)  ThisWorkbook.Worksheets.Add Count:=2, Before:=ThisWorkbook.Worksheets(2) 或 ThisWorkbook.Workshees.Add ThisWorkbook.Worksheets(2), , 2  ‘在第二个工作表之前添加两个新的工作表
+
+(78) ThisWorkbook.Worksheets(3).Copy ‘复制一个工作表到新的工作簿
+
+(79)  ThisWorkbook.Worksheets(3).Copy ThisWorkbook.Worksheets(2) ‘复制第三个工作表到第二个工作表之前
+
+(80) ThisWorkbook.Worksheets(1).Activate ‘当前工作簿中的第一个工作表被激活
+
+(81)  ThisWorkbook.Worksheets(“Sheet1”).Rows(1).Hidden = True ‘将工作表Sheet1中的1隐藏
+
+(82) ActiveCell.EntireRow.Hidden = True ‘将当前工作表中活动单元格所在的行隐藏
+
+(83)   ActiveSheet.Range(“A:A”).EntireColumn.AutoFit ‘自动调整当前工作表A列列宽
+
+(84) ActiveSheet.Cells.SpecialCells(xlCellTypeConstants,xlTextValues) ‘选中当前工作表中常量和文本单元格
+
+(85) ActiveSheet.Cells.SpecialCells(xlCellTypeConstants,xlErrors+xlTextValues) ‘选中当前工作表中常量和文本及错误值单元格
+
+(86)  Application.WorksheetFunction.CountA(Range(“A:A”))+1 ‘获取A列的下一个空单元格
+
+(87) Set FirstCell=Range(RefEdit1.Text).Range(“A1”) ‘设置某单元格区域左上角单元格
+
+(88)  Application.OnTime Now + TimeValue(“00:00:15”), “myProcedure” ‘等待15秒后运行myProcedure过程
+
+(89) Application对象
+
+(90)  Application.UserName ‘返回应用程序的用户名
+
+(91)  Application.Caller.Parent.Parent ‘返回调用函数的工作簿名称
+
+(92)  Application.StatusBar=”请等待……” ‘将文本写到状态栏
+
+(93)  Application.StatusBar=False ‘将状态栏重新设置成正常状态
+
+(94)  Application.Transpose(Array(“Sun”,”Mon”,”Tur”,”Wed”,”Thu”,”Fri”,”Sat”)) ‘返回一个垂直的数组
+
+(95)  Application.ActiveCell.Address ‘返回活动单元格的地址(注:返回的是绝对地址)
+
+(96)  Application.ActiveSheet.Name ‘返回活动工作表的名称
+
+(97)  Application.ActiveWindow.Caption ‘返回活动窗口的标题
+
+(98) Application.ActiveWorkbook.Name ‘返回活动工作簿的名称
+
+(99)  Application.Selection.Address ‘返回所选区域的地址
+
+(100) Application.ThisWorkbook.Name ‘返回当前工作簿的名称
+
+(101)  Range(A1:A10).Value=Application.WorksheetFunction.Transpose(MyArray) ‘将一含有10个元素的水平数组转置成垂直数组，并写入工作表单元格区域(A1至A10)。
+
+(102) Cells(rows.count,1).End(xlUp).Row+1 ‘返回A列最后一行的下一行
+
+(103)  rng.Range(“A1”) ‘返回区域左上角的单元格
+
+(104)  ActiveSheet.Range(“A:B”).Sort Key1:=Columns(“B”), Key2:=Columns(“A”), Header:=xlYes ‘两个关键字排序，相邻两列，B列为主关键字，A列为次关键字，升序排列
+
+(105)  cell.Range(“A1”).HasFormula ‘检查单元格或单元格区域中的第一个单元格是否含有公式或cell.HasFormula ‘工作表中单元格是否含有公式
+
+(106)  Cell.EntireColumn ‘单元格所在的整列
+
+(107) Cell.EntireRow ‘单元格所在的整行
+
+(108) rng.Address ‘返回rng区域的地址
+
+(109)  Range(“D5:D10”).Cells(1,1) ‘返回单元格区域D5:D10中左上角单元格
+
+(110)  ActiveCell.Row ‘活动单元格所在的行数
+
+(111) ActiveCell.Column ‘活动单元格所在的列数
+
+(112)  Set MyRange=Range(“A1:A5”) ‘创建一个名为MyRange的对象变量
+
+(113)  Application.Calculation = xlCalculationManual ‘设置工作簿手动计算
+
+(114) Application.Calculation = xlCalculationAutomatic ‘工作簿自动计算
+
+(115)  Worksheets(1).EnableCalculation = False ‘不对第一张工作表自动进行重算
+
+(116) ActiveSheet.Shapes.AddPicture “d:\sx.jpg”, True, True, 60, 20, 400, 300 ‘在当前工作表中插入一张d盘中名为sx.jpg的图片
